@@ -1,0 +1,52 @@
+﻿
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="D:\MicroFeel.GitHub\abp\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>MicroFeel.Abp.Theme.AdminLTE</AssemblyName>
+    <PackageId>MicroFeel.Abp.Theme.AdminLTE</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <IsPackable>true</IsPackable>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MicroFeel.Abp.Theme.AdminLTE</RootNamespace>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>LOGO-NANO.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
+    <Version>1.0.0</Version>
+    <Copyright>哈尔滨微感科技有限公司</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Themes\**\*.cshtml" />
+    <EmbeddedResource Include="Pages\**\*.cshtml" />
+    <EmbeddedResource Include="Views\**\*.cshtml" />
+    <EmbeddedResource Include="wwwroot\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\**\*.*" />
+    <Content Remove="Themes\**\*.cshtml" />
+    <Content Remove="Pages\**\*.cshtml" />
+    <Content Remove="Views\**\*.cshtml" />
+    <Content Remove="Properties\launchSettings.json" />
+    <None Include="C:\Users\mx\OneDrive\文档\VI\微感\png\LOGO-NANO.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.1.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.1.2" />
+  </ItemGroup>
+  
+</Project>
