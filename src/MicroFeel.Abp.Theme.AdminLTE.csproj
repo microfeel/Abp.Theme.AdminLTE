@@ -1,8 +1,5 @@
 ﻿
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
-  <Import Project="D:\MicroFeel.GitHub\abp\common.props" />
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>MicroFeel.Abp.Theme.AdminLTE</AssemblyName>
@@ -16,12 +13,14 @@
     <RootNamespace>MicroFeel.Abp.Theme.AdminLTE</RootNamespace>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>LOGO-NANO.png</PackageIcon>
+    <PackageIcon>logo-nano.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
-    <Version>1.0.0</Version>
+    <Version>2.0.0-rc1</Version>
     <Copyright>哈尔滨微感科技有限公司</Copyright>
+    <Authors>MicroFeel</Authors>
+    <Description>abp adminLTE  theme</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,7 +36,7 @@
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Views\**\*.cshtml" />
     <Content Remove="Properties\launchSettings.json" />
-    <None Include="C:\Users\mx\OneDrive\文档\VI\微感\png\LOGO-NANO.png">
+    <None Include="logo-nano.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -45,8 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.1.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.1.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.0.0" />
   </ItemGroup>
   
 </Project>
