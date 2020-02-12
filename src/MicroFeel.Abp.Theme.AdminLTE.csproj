@@ -17,7 +17,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
-    <Version>2.0.1</Version>
+    <Version>2.0.1.1-beta</Version>
     <Copyright>哈尔滨微感科技有限公司</Copyright>
     <Authors>MicroFeel</Authors>
     <Description>abp adminLTE  theme</Description>

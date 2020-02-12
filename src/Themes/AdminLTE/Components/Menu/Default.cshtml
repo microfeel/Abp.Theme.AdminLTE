@@ -7,43 +7,39 @@
     var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
     if (menuItem.IsLeaf)
     {
-        if (menuItem.Url != null)
-        {
-            <li class="nav-item @cssClass @disabled" @elementId>
-                <a class="nav-link" href="@(menuItem.Url ?? "#")">
-                    @if (menuItem.Icon != null)
+        <li class="nav-item @cssClass @disabled" @elementId>
+            <a class="nav-link" href="@(menuItem.Url ?? "#")">
+                @if (menuItem.Icon != null)
+                {
+                    if (menuItem.Icon.StartsWith("fa"))
                     {
-                        if (menuItem.Icon.StartsWith("fa"))
-                        {
-                            <i class="@menuItem.Icon"></i>
-                        }
+                        <i class="@menuItem.Icon"></i>
                     }
-                    @menuItem.DisplayName
-                </a>
-            </li>
-        }
+                }
+                @menuItem.DisplayName
+            </a>
+        </li>
     }
     else
     {
-        <li class="nav-item">
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="Menu_@(menuItem.Name)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if (menuItem.Icon != null)
+        <li class="nav-item has-treeview">
+            <a class="nav-link" href="#" id="Menu_@(menuItem.Name)">
+                @if (menuItem.Icon != null)
+                {
+                    if (menuItem.Icon.StartsWith("fa"))
                     {
-                        if (menuItem.Icon.StartsWith("fa"))
-                        {
-                            <i class="@menuItem.Icon"></i>
-                        }
+                        <i class="@menuItem.Icon"></i>
                     }
-                    @menuItem.DisplayName
-                </a>
-                <div class="dropdown-menu border-0 shadow-sm" aria-labelledby="Menu_@(menuItem.Name)">
+                }
+                @menuItem.DisplayName
+                <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview" style="display: block;">
                     @foreach (var childMenuItem in menuItem.Items)
                     {
                         @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
                     }
-                </div>
-            </div>
+            </ul>
         </li>
     }
 }
