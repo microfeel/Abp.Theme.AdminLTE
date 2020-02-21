@@ -1,7 +1,5 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
-using Volo.Abp.Settings;
 
 namespace MicroFeel.Abp.Theme.AdminLTE.Components.Footer
 {

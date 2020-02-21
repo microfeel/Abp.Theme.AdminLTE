@@ -1,12 +1,12 @@
-﻿@using Volo.Abp.AspNetCore.Mvc.AntiForgery
+﻿@using MicroFeel.Abp.Theme.AdminLTE.Bundling
+@using MicroFeel.Abp.Theme.AdminLTE.Components.ControlSidebar
+@using MicroFeel.Abp.Theme.AdminLTE.Components.Footer
+@using MicroFeel.Abp.Theme.AdminLTE.Components.Header
+@using MicroFeel.Abp.Theme.AdminLTE.Components.Menu
+@using Volo.Abp.AspNetCore.Mvc.AntiForgery
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
-@using MicroFeel.Abp.Theme.AdminLTE.Bundling
-@using MicroFeel.Abp.Theme.AdminLTE.Components.MainNavbar
-@using MicroFeel.Abp.Theme.AdminLTE.Components.MainSideBar
-@using MicroFeel.Abp.Theme.AdminLTE.Components.ControlSideBar
-@using MicroFeel.Abp.Theme.AdminLTE.Components.Footer
-@using MicroFeel.Abp.Theme.AdminLTE.Components.PageAlerts
+@using MicroFeel.Abp.Theme.AdminLTE.Components
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
@@ -17,7 +17,6 @@
 @{
     Layout = null;
     AbpAntiForgeryManager.SetCookie();
-    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "content-wrapper"; //TODO: Better and type-safe options
 
     var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
 
@@ -39,7 +38,8 @@
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Application)
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@pageTitle</title>
@@ -51,36 +51,26 @@
     @await RenderSectionAsync("styles", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Application)
+    
+    <!-- CDN Google Font: Source Sans Pro -->
+    <link href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="layout-fixed layout-navbar-fixed layout-footer-fixed">
-
+<body class="sidebar-mini layout-fixed">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Application)
 
-    @(await Component.InvokeAsync<MainNavbarViewComponent>())
+    <div class="wrapper">
+        @(await Component.InvokeAsync<HeaderViewComponent>())
 
-    @(await Component.InvokeAsync<MainSideBarComponent>())
+        @(await Component.InvokeAsync<MenuViewComponent>())
 
-    <div class="@containerClass">
-        @(await Component.InvokeAsync<PageAlertsViewComponent>())
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">@RenderSection("content_toolbar", false)</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+        <div class="content-wrapper">
+            @RenderBody()
         </div>
-        @*<div id="AbpContentToolbar">
-                <div class="text-right mb-2">
-                    @RenderSection("content_toolbar", false)
-                </div>
-            </div>*@
-        @RenderBody()
-    </div>
 
-    @(await Component.InvokeAsync<ControlSideBarComponent>())
-    @(await Component.InvokeAsync<FooterViewComponent>())
+        @(await Component.InvokeAsync<FooterViewComponent>())
+
+        @(await Component.InvokeAsync<ControlSidebarViewComponent>())
+    </div>
 
     <abp-script-bundle name="@AdminLTEThemeBundles.Scripts.Global" />
 

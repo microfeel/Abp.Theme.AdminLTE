@@ -9,6 +9,7 @@ using Volo.Abp.VirtualFileSystem;
 using MicroFeel.Abp.Theme.AdminLTE.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using MicroFeel.Abp.Theme.AdminLTE.Bundling;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MicroFeel.Abp.Theme.AdminLTE
 {
@@ -48,6 +49,10 @@ namespace MicroFeel.Abp.Theme.AdminLTE
                 options.Contributors.Add(new AdminLTEThemeMainTopToolbarContributor());
             });
 
+            Configure<RazorPagesOptions>(options =>
+            {
+                options.Conventions.AuthorizePage("/index");
+            });
             Configure<AbpBundlingOptions>(options =>
             {
                 options

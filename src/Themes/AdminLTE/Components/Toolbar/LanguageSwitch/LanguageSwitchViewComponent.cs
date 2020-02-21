@@ -29,7 +29,7 @@ namespace MicroFeel.Abp.Theme.AdminLTE.Components.Toolbar.LanguageSwitch
                 CurrentLanguage = currentLanguage,
                 OtherLanguages = languages.Where(l => l != currentLanguage).ToList()
             };
-            
+
             return View("~/Themes/AdminLTE/Components/Toolbar/LanguageSwitch/Default.cshtml", model);
         }
     }

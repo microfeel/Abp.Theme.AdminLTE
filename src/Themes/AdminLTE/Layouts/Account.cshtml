@@ -1,12 +1,12 @@
-﻿@using Microsoft.Extensions.Localization
+﻿@using MicroFeel.Abp.Theme.AdminLTE.Bundling
+@using MicroFeel.Abp.Theme.AdminLTE.Components.PageAlerts
+@using Microsoft.Extensions.Localization
 @using Microsoft.Extensions.Options
 @using Volo.Abp.AspNetCore.MultiTenancy
 @using Volo.Abp.AspNetCore.Mvc.AntiForgery
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
-@using MicroFeel.Abp.Theme.AdminLTE.Bundling
-@using MicroFeel.Abp.Theme.AdminLTE.Components.PageAlerts
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
@@ -17,16 +17,14 @@
 @inject ICurrentTenant CurrentTenant
 @inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
 @inject ITenantResolveResultAccessor TenantResolveResultAccessor
-
 @{
     Layout = null;
     AbpAntiForgeryManager.SetCookie();
-    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "content-wrapper"; //TODO: Better and type-safe options
 }
 
 <!DOCTYPE html>
 
-<html lang="@System.Globalization.CultureInfo.CurrentCulture.Name">
+<html lang="@CultureInfo.CurrentCulture.Name">
 <head>
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
@@ -43,45 +41,45 @@
     @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
+    <!-- CDN Google Font: Source Sans Pro -->
+    <link href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="abp-account-layout bg-light">
+<body class="hold-transition login-page">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
 
-    <div class="@containerClass">
-        <abp-row>
-            <abp-column size-md="_5" class="mx-auto">
-                @if (MultiTenancyOptions.Value.IsEnabled &&
-                (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="javascript:;">
+                @(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)
+            </a>
+        </div>
+        @(await Component.InvokeAsync<PageAlertsViewComponent>())
+
+        @if (MultiTenancyOptions.Value.IsEnabled &&
+             (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+        {
+            <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
+                <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
+                @if (CurrentTenant.Id == null)
                 {
-                    <div class="card shadow-sm rounded mb-3">
-                        <div class="card-body px-5">
-                            <div class="row">
-                                <div class="col">
-                                    <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
-                                    <h6 class="m-0 d-inline-block">
-                                        @if (CurrentTenant.Id == null)
-                                        {
-                                            <span>
-                                                @MultiTenancyStringLocalizer["NotSelected"]
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
-                                        }
-                                    </h6>
-                                </div>
-                                <div class="col-auto">
-                                    <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <span>
+                        @MultiTenancyStringLocalizer["NotSelected"]
+                    </span>
                 }
-                @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                else
+                {
+                    <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                }
+            </a>
+        }
+
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
                 @RenderBody()
-            </abp-column>
-        </abp-row>
+            </div>
+        </div>
+        <!-- /.login-box-body -->
     </div>
 
     <abp-script-bundle name="@AdminLTEThemeBundles.Scripts.Global" />
