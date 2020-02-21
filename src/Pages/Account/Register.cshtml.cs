@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
 
-namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account
+namespace MicroFeel.Abp.Theme.AdminLTE.Pages.Account
 {
     public class RegisterModel : Volo.Abp.Account.Web.Pages.Account.RegisterModel
     {
