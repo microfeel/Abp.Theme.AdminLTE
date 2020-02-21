@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MicroFeel.Abp.Theme.AdminLTEDemo</RootNamespace>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\MicroFeel.Abp.Theme.AdminLTEDemo.Domain\MicroFeel.Abp.Theme.AdminLTEDemo.Domain.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="2.1.1" />
+  </ItemGroup>
+
+</Project>
