@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /demo/MicroFeel.Abp.Theme.AdminLTEDemo/MicroFeel.Abp.Theme.AdminLTEDemo.Web/wwwroot/libs
+/demo/MicroFeel.Abp.Theme.AdminLTEDemo/MicroFeel.Abp.Theme.AdminLTEDemo.Web/Logs/logs.txt
