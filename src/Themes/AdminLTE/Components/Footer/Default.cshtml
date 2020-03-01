@@ -1,9 +1,14 @@
-﻿<footer class="main-footer">
+﻿@using MicroFeel.Abp.Theme.AdminLTE.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@inject IBrandingProvider BrandingProvider
+@inject IHtmlLocalizer<AdminLTEResource> TL
+
+<footer class="main-footer">
     @{
-        var copyright = (string)ViewData["ApplicationCopyRight"] ?? "Your copyright info";
+        var copyright = (string)ViewData["ApplicationCopyRight"] ?? BrandingProvider.AppName;
         var version = (string)ViewData["ApplicationVersion"] ?? "1.0";
-        var content = "All rights reserved.";
-        <strong>@Html.Raw(copyright)</strong> @content
+        <strong>@Html.Raw(copyright)</strong> @TL["AllRightsReserved"]
         <div class="float-right d-none d-sm-inline-block">
             <b>Version:</b> @version
         </div>

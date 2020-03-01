@@ -3,10 +3,14 @@
 @model ApplicationMenu
 @inject IBrandingProvider  ibrandingProvider
 @inject Volo.Abp.Settings.ISettingProvider  settingProvider
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="~/" class="brand-link">
-        <img src="@ibrandingProvider.LogoUrl" alt="BrandLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        @if (!string.IsNullOrWhiteSpace(ibrandingProvider.LogoUrl))
+        {
+            <img src="@ibrandingProvider.LogoUrl" alt="BrandLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        }
         <span class="brand-text font-weight-light">@ibrandingProvider.AppName</span>
     </a>
 
