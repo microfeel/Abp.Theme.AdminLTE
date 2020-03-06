@@ -1,3 +1,11 @@
 ﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @inject IBrandingProvider BrandingProvider
-<a class="navbar-brand" href="~/">@BrandingProvider.AppName</a>
+@*<a class="navbar-brand" href="~/">@BrandingProvider.AppName</a>*@
+<!-- Brand Logo -->
+<a href="~/" class="brand-link">
+    @if (!string.IsNullOrWhiteSpace(BrandingProvider.LogoUrl))
+    {
+        <img src="@BrandingProvider.LogoUrl" alt="BrandLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    }
+    <span class="brand-text font-weight-light">@BrandingProvider.AppName</span>
+</a>

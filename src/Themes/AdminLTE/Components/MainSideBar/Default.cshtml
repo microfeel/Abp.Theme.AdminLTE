@@ -1,75 +1,70 @@
 ﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @using Volo.Abp.UI.Navigation;
+@using MicroFeel.Abp.Theme.AdminLTE.Components.Brand;
 @model ApplicationMenu
 @inject IBrandingProvider  ibrandingProvider
 @inject Volo.Abp.Settings.ISettingProvider  settingProvider
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="~/" class="brand-link">
-        @if (!string.IsNullOrWhiteSpace(ibrandingProvider.LogoUrl))
-        {
-            <img src="@ibrandingProvider.LogoUrl" alt="BrandLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        }
-        <span class="brand-text font-weight-light">@ibrandingProvider.AppName</span>
-    </a>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        @await Component.InvokeAsync(typeof(MainNavbarBrandViewComponent))
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                @foreach (var menuItem in Model.Items)
-                {
-                    var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id=\"{menuItem.ElementId}\"";
-                    var cssClass = string.IsNullOrEmpty(menuItem.CssClass) ? string.Empty : menuItem.CssClass;
-                    var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    @foreach (var menuItem in Model.Items)
+                    {
+                        var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id=\"{menuItem.ElementId}\"";
+                        var cssClass = string.IsNullOrEmpty(menuItem.CssClass) ? string.Empty : menuItem.CssClass;
+                        var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
 
-                    if (menuItem.IsLeaf)
-                    {
-                        <li class="nav-item @cssClass @disabled" @elementId>
-                            <a class="nav-link" href="@(menuItem.Url ?? "#")">
-                                @if (menuItem.Icon != null)
-                                {
-                                    if (menuItem.Icon.StartsWith("fa"))
+                        if (menuItem.IsLeaf)
+                        {
+                            <li class="nav-item @cssClass @disabled" @elementId>
+                                <a class="nav-link" href="@(menuItem.Url ?? "#")">
+                                    @if (menuItem.Icon != null)
                                     {
-                                        <i class="nav-icon @menuItem.Icon"></i>
+                                        if (menuItem.Icon.StartsWith("fa"))
+                                        {
+                                            <i class="nav-icon @menuItem.Icon"></i>
+                                        }
                                     }
-                                }
-                                <p>
-                                    @menuItem.DisplayName
-                                </p>
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item has-treeview">
-                            <a class="nav-link" href="#">
-                                @if (menuItem.Icon != null)
-                                {
-                                    if (menuItem.Icon.StartsWith("fa"))
+                                    <p>
+                                        @menuItem.DisplayName
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item has-treeview">
+                                <a class="nav-link" href="#">
+                                    @if (menuItem.Icon != null)
                                     {
-                                        <i class="nav-icon @menuItem.Icon"></i>
+                                        if (menuItem.Icon.StartsWith("fa"))
+                                        {
+                                            <i class="nav-icon @menuItem.Icon"></i>
+                                        }
                                     }
-                                }
-                                <p>
-                                    @menuItem.DisplayName
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                @foreach (var childMenuItem in menuItem.Items)
-                                {
-                                    @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
-                                }
-                            </ul>
-                        </li>
+                                    <p>
+                                        @menuItem.DisplayName
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @foreach (var childMenuItem in menuItem.Items)
+                                    {
+                                        @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
+                                    }
+                                </ul>
+                            </li>
+                        }
                     }
-                }
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-</aside>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
