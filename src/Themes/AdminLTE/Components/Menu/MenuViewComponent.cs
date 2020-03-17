@@ -19,7 +19,7 @@ namespace MicroFeel.Abp.Theme.AdminLTE.Components.Menu
             //获取当前页地址
             var pageUrl = RouteData.Values["page"];
             var menu = await _menuManager.GetAsync(StandardMenus.Main);
-            SetMenuItemActivateCssClass(pageUrl.ToString().ToUpper(), parentMenu: menu);
+            //SetMenuItemActivateCssClass(pageUrl.ToString().ToUpper(), parentMenu: menu);
             return View("~/Themes/AdminLTE/Components/Menu/Default.cshtml", menu);
         }
 
