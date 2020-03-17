@@ -17,7 +17,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
-    <Version>2.0.1.1-beta</Version>
+    <Version>2.1.1</Version>
     <Copyright>哈尔滨微感科技有限公司</Copyright>
     <Authors>MicroFeel</Authors>
     <Description>abp adminLTE  theme</Description>
@@ -36,6 +36,8 @@
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Views\**\*.cshtml" />
     <Content Remove="Properties\launchSettings.json" />
+    <!--<EmbeddedResource Remove="wwwroot\themes\adminlte\js\adminlte.js" />-->
+    <!--<Content Include="wwwroot\themes\adminlte\js\adminlte.js" />-->
     <None Include="logo-nano.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -44,11 +46,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.2.1" />
   </ItemGroup>
   
 </Project>
