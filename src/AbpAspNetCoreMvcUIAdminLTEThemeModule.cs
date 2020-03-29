@@ -9,6 +9,11 @@ using Volo.Abp.VirtualFileSystem;
 using MicroFeel.Abp.Theme.AdminLTE.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using MicroFeel.Abp.Theme.AdminLTE.Bundling;
+using Volo.Abp.Localization;
+using MicroFeel.Abp.Theme.AdminLTE.Localization;
+using Volo.Abp.Validation.Localization;
+using Localization.Resources.AbpUi;
+using System;
 
 namespace MicroFeel.Abp.Theme.AdminLTE
 {
@@ -38,9 +43,21 @@ namespace MicroFeel.Abp.Theme.AdminLTE
                 }
             });
 
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                .Add<AdminLTEResource>("en")
+                .AddBaseTypes(
+                        typeof(AbpValidationResource),
+                        typeof(AbpUiResource))
+                .AddVirtualJson("/Localization/AdminLTE");
+            });
+
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<AbpAspNetCoreMvcUIAdminLTEThemeModule>("MicroFeel.Abp.Theme.AdminLTE");
+
+                //options.FileSets..Add(new VirtualDirectoryFileInfo("/wwwroot/themes/usericon.png", "userinfo", DateTimeOffset.Now));
             });
 
             Configure<AbpToolbarOptions>(options =>

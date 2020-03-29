@@ -17,7 +17,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
-    <Version>2.2.1</Version>
+    <Version>2.3.0</Version>
     <Copyright>哈尔滨微感科技有限公司</Copyright>
     <Authors>MicroFeel</Authors>
     <Description>abp adminLTE  theme</Description>
@@ -36,6 +36,7 @@
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Views\**\*.cshtml" />
     <Content Remove="Properties\launchSettings.json" />
+    <EmbeddedResource Remove="wwwroot\themes\adminlte\usericon.png" />
     <None Include="logo-nano.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -46,6 +47,16 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.3.0" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="wwwroot\themes\adminlte\dist\css\themeStyle.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\themes\adminlte\dist\img\usericon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   
 </Project>

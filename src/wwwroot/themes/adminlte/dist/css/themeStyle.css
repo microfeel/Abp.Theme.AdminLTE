@@ -1,0 +1,14 @@
+﻿@charset "UTF-8";
+
+.user-menu {
+    display: block;
+    margin-top: 8px;
+}
+
+    .user-menu > ul {
+        position: absolute;
+        right: 5%;
+        left: auto;
+        border: 1px solid #ddd;
+        background: #fff;
+    }
