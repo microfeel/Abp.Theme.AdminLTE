@@ -7,6 +7,8 @@ namespace MicroFeel.Abp.Theme.AdminLTE
     public class AdminLTETheme : ITheme, ITransientDependency
     {
         public const string Name = "AdminLTE";
+        public const string NavToolBar = "NavToolBar";
+        public const string MainMenu = "Main";
 
         public string GetLayout(string name, bool fallbackToDefault = true)
         {

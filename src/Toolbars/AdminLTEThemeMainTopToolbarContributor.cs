@@ -11,11 +11,11 @@ using Volo.Abp.Users;
 
 namespace MicroFeel.Abp.Theme.AdminLTE.Toolbars
 {
-    public class AdminLTEThemeMainTopToolbarContributor : IToolbarContributor
+    public class AdminLTEThemeNavBarToolbarContributor : IToolbarContributor
     {
         public async Task ConfigureToolbarAsync(IToolbarConfigurationContext context)
         {
-            if (context.Toolbar.Name != StandardToolbars.Main)
+            if (context.Toolbar.Name != AdminLTETheme.NavToolBar)
             {
                 return;
             }
@@ -24,12 +24,12 @@ namespace MicroFeel.Abp.Theme.AdminLTE.Toolbars
             {
                 return;
             }
-            context.Toolbar.Items.Add(new ToolbarItem(typeof(MessagesBarComponent)));
-            context.Toolbar.Items.Add(new ToolbarItem(typeof(NotificationsBarComponent)));
+            //TODO 实现Messages 和Notifications providers
+            //context.Toolbar.Items.Add(new ToolbarItem(typeof(MessagesBarComponent)));
+            //context.Toolbar.Items.Add(new ToolbarItem(typeof(NotificationsBarComponent)));
 
             var languageProvider = context.ServiceProvider.GetService<ILanguageProvider>();
 
-            //TODO: This duplicates GetLanguages() usage. Can we eleminate this?
             var languages = await languageProvider.GetLanguagesAsync();
             if (languages.Count > 1)
             {

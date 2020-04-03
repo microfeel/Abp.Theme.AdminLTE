@@ -56,13 +56,12 @@ namespace MicroFeel.Abp.Theme.AdminLTE
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<AbpAspNetCoreMvcUIAdminLTEThemeModule>("MicroFeel.Abp.Theme.AdminLTE");
-
-                //options.FileSets..Add(new VirtualDirectoryFileInfo("/wwwroot/themes/usericon.png", "userinfo", DateTimeOffset.Now));
             });
 
             Configure<AbpToolbarOptions>(options =>
             {
-                options.Contributors.Add(new AdminLTEThemeMainTopToolbarContributor());
+                //options.Contributors.Add(new AdminLTEThemeMainMenuContributor());
+                options.Contributors.Add(new AdminLTEThemeNavBarToolbarContributor());
             });
 
             Configure<AbpBundlingOptions>(options =>
