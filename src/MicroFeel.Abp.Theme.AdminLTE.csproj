@@ -17,7 +17,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/microfeel/Abp.Theme.AdminLTE</PackageProjectUrl>
-    <Version>2.1.1</Version>
+    <Version>2.1.2</Version>
     <Copyright>哈尔滨微感科技有限公司</Copyright>
     <Authors>MicroFeel</Authors>
     <Description>abp adminLTE  theme</Description>
@@ -46,11 +46,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.6.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.6.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.6.0" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.6.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.6.0" />
   </ItemGroup>
   
 </Project>
