@@ -5,11 +5,11 @@ using Volo.Abp.UI.Navigation;
 
 namespace MicroFeel.Abp.Theme.AdminLTE.Components.Menu
 {
-    public class MainNavbarMenuViewComponent : AbpViewComponent
+    public class DataGridViewComponent : AbpViewComponent
     {
         private readonly IMenuManager _menuManager;
 
-        public MainNavbarMenuViewComponent(IMenuManager menuManager)
+        public DataGridViewComponent(IMenuManager menuManager)
         {
             _menuManager = menuManager;
         }

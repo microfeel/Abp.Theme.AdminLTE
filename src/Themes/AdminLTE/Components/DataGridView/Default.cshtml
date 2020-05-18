@@ -1,0 +1,122 @@
+﻿@page
+@using MicroFeel.Abp.Theme.AdminLTE.Components
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model DataGridViewComponentModel
+@{
+}
+
+<scripts>
+    $(function () {
+
+    var l = abp.localization.getResource('@Model.ResourceName');
+    var _createModal = new abp.ModalManager(abp.appPath + 'ProductManagement/Products/Create');
+    var _editModal = new abp.ModalManager(abp.appPath + 'ProductManagement/Products/Edit');
+
+    var _dataTable = $('#GridTable').DataTable(abp.libs.datatables.normalizeConfiguration({
+    processing: true,
+    serverSide: true,
+    paging: true,
+    searching: false,
+    autoWidth: false,
+    scrollCollapse: true,
+    order: [[1, "desc"]],
+    ajax: abp.libs.datatables.createAjax(productManagement.products.getListPaged),
+    columnDefs: [
+    {
+    rowAction: {
+    items:
+    [
+    {
+    text: l('Edit'),
+    visible: abp.auth.isGranted('ProductManagement.Product.Update'),
+    action: function (data) {
+    _editModal.open({
+    productId: data.record.id
+    });
+    }
+    },
+    {
+    text: l('Delete'),
+    visible: abp.auth.isGranted('ProductManagement.Product.Delete'),
+    confirmMessage: function (data) { return l('ProductDeletionWarningMessage'); },
+    action: function (data) {
+    productManagement.products
+    .delete(data.record.id)
+    .then(function () {
+    _dataTable.ajax.reload();
+    });
+    }
+    }
+    ]
+    }
+    },
+    {
+    target: 1,
+    data: "code"
+    },
+    {
+    target: 2,
+    data: "name"
+    },
+    {
+    target: 3,
+    data: "price"
+    },
+    {
+    target: 4,
+    data: "stockCount"
+    }
+    ]
+    }));
+
+
+    $("#CreateNewProductButtonId").click(function () {
+    _createModal.open();
+    });
+
+    _createModal.onClose(function () {
+    _dataTable.ajax.reload();
+    });
+
+    _editModal.onResult(function () {
+    _dataTable.ajax.reload();
+    });
+
+    });
+    }
+</scripts>
+<abp-card>
+    <abp-card-header>
+        @foreach (var toolbar in Model.Toolbars)
+        {
+            <abp-row>
+                <abp-column size-md="_12" class="text-left">
+                    <abp-button-toolbar itemid="@toolbar.Id">
+                        @foreach (var group in toolbar.Groups)
+                        {
+                            <abp-button-group class="mr-@toolbar.Space">
+                                @foreach (var button in group.Buttons)
+                                {
+                                    <abp-button icon="plus" text="@button.Text" button-type="@button.ButtonType" size="@button.Size" icon-type="@button.IconType" disabled="@button.Disabled" class="@button.Icon"></abp-button>
+                                }
+                            </abp-button-group>
+                        }
+                    </abp-button-toolbar>
+                </abp-column>
+            </abp-row>
+        }
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" dark-theme="true" small="true" border-style="Bordered" id="GridTable" class="nowrap">
+            <thead>
+                <tr>
+                    @foreach (var headerText in Model.TableHeads)
+                    {
+                        <th>@headerText</th>
+                    }
+                </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

@@ -2,15 +2,15 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @inject IBrandingProvider BrandingProvider
-@inject IHtmlLocalizer<AdminLTEResource> TL
+@inject IHtmlLocalizer<AdminLTEResource> L
 
 <footer class="main-footer">
     @{
         var copyright = (string)ViewData["ApplicationCopyRight"] ?? BrandingProvider.AppName;
         var version = (string)ViewData["ApplicationVersion"] ?? "1.0";
-        <strong>@Html.Raw(copyright)</strong> @TL["AllRightsReserved"]
+        <strong>@Html.Raw(copyright)</strong> @L["AllRightsReserved"]
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version:</b> @version
+            <b>Ver:</b> @version
         </div>
     }
 </footer>

@@ -10,7 +10,7 @@ namespace MicroFeel.Abp.Theme.AdminLTE.Bundling
             context.Files.Add("/themes/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
             context.Files.Add("/themes/adminlte/dist/css/adminlte.min.css"); 
             context.Files.Add("/themes/adminlte/dist/css/themeStyle.css"); 
-            context.Files.Add("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700");
+            context.Files.Add("/themes/adminlte/dist/css/googlefont.css");
         }
     }
 }

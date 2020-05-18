@@ -1,4 +1,4 @@
-﻿
+
 <Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -28,15 +28,19 @@
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Views\**\*.cshtml" />
     <EmbeddedResource Include="wwwroot\**\*.*" />
+    <EmbeddedResource Include="Localization\AdminLTE\*.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Localization\AdminLTE\*.json" />
     <Content Remove="wwwroot\**\*.*" />
     <Content Remove="Themes\**\*.cshtml" />
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Views\**\*.cshtml" />
     <Content Remove="Properties\launchSettings.json" />
     <EmbeddedResource Remove="wwwroot\themes\adminlte\usericon.png" />
+    <None Remove="Themes\AdminLTE\Components\DataGridView\DataGrid.js" />
+    <EmbeddedResource Include="Themes\AdminLTE\Components\DataGridView\DataGrid.js" />
     <None Include="logo-nano.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -45,8 +49,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.3.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.7.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.7.0" />
   </ItemGroup>
 
   <ItemGroup>
